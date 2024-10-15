@@ -1,0 +1,236 @@
+/* Importing fonts */ 
+@import url('https://fonts.googleapis.com/css2?family=Gravitas+One&family=Nosifer&display=swap');
+
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Set up body */
+body {
+    font-family: 'Gravitas One', serif; /* Applying Gravitas One to body */
+    background: url('images/background.jpg');
+    background-size: cover;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    margin: 0; /* Remove any potential margin from the body */
+}
+
+/* Container */
+.container {
+    background-color: #13022a; /* Solid background color (no transparency) */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 550px;
+    width: 100%;
+    animation: fadeIn 1s ease-out;
+    border: 2px solid #1c87c9;
+    transition: transform 0.3s ease;
+}
+
+.container:hover {
+    transform: translateY(-5px);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Heading */
+.nosifer-regular {
+    font-family: 'Nosifer', sans-serif; /* Applying Nosifer to the heading */
+    font-size: 3em;
+    color: #1c87c9;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+/* Loader styles */
+.loader {
+    width: 30px;
+    aspect-ratio: 1;
+    background: #554236;
+    display: grid;
+    transform-origin: top right;
+    animation: l6-0 1s infinite linear;
+    margin: 20px auto; /* Center the loader */
+}
+
+.loader::before,
+.loader::after {
+    content: "";
+    grid-area: 1/1;
+    background: #f77825;
+    transform-origin: inherit;
+    animation: inherit;
+    animation-name: l6-1;
+}
+
+.loader::after {
+    background: #60B99A;
+    --s: 180deg;
+}
+
+@keyframes l6-0 {
+    70%, 100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes l6-1 {
+    30% {
+        transform: rotate(var(--s, 90deg));
+    }
+    70% {
+        transform: rotate(0);
+    }
+}
+
+/* Form Styling */
+form {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-size: 1.2em;
+    margin-bottom: 8px;
+    display: block;
+    color: #ffffff;
+}
+
+.form-group input[type="text"],
+.form-group input[type="file"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    font-size: 1.1em;
+    transition: border-color 0.3s;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="file"]:focus {
+    border-color: #1c87c9;
+}
+
+/* Divider */
+.divider {
+    margin: 20px 0;
+    font-weight: bold;
+    font-size: 1.3em;
+    color: #666666;
+    position: relative;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    position: absolute;
+    width: 40%;
+    height: 1px;
+    background-color: #ccc;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.divider::before {
+    left: 0;
+}
+
+.divider::after {
+    right: 0;
+}
+
+/* Scan Button with improved animation */
+.scan-btn {
+    padding: 12px 25px;
+    font-size: 1em;
+    background-color: transparent; /* Background set to transparent initially */
+    color: #2c9caf;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    outline: 2px solid #2c9caf; /* Outline color */
+    position: relative;
+    overflow: hidden;
+    transition: all 400ms ease-in-out;
+    z-index: 1;
+}
+
+.scan-btn:hover {
+    color: #ffffff;
+    transform: scale(1.1);
+    outline: 2px solid #70bdca;
+    box-shadow: 4px 5px 17px -4px #268391;
+}
+
+.scan-btn::before {
+    content: "";
+    position: absolute;
+    left: -50px;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: #2c9caf;
+    transform: skewX(45deg);
+    z-index: -1;
+    transition: width 1000ms;
+}
+
+.scan-btn:hover::before {
+    width: 250%;
+}
+
+.scan-btn {
+    animation: pulse 2s infinite; /* Apply pulsating effect */
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(44, 156, 175, 0.7);
+    }
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 10px 10px rgba(44, 156, 175, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(44, 156, 175, 0);
+    }
+}
+
+/* Chart Styling */
+#pie-chart {
+    margin-top: 30px;
+    max-width: 100%;
+}
+
+/* Adjustments for small screens */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2.5em;
+    }
+
+    .scan-btn {
+        width: 100%;
+    }
+}
